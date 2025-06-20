@@ -274,181 +274,83 @@ class WalletAnalyzer {
 
     // Hide share modal
     hideShareModal() {
-        const modal = document.getElementById('share-modal');
-        modal?.classList.remove('active');
+        document.getElementById('share-modal')?.classList.remove('active');
     }
 
-    // Share functionality
+    // Share result to a platform
     shareResult(platform) {
         if (!this.storyData) return;
 
-        const shareText = `내 지갑 유형은 "${this.storyData.walletType.name}" ${this.storyData.walletType.emoji}!\n\n${this.storyData.typeDesc.main}\n\n당신의 온체인 흑역사는? 👉`;
-        const shareUrl = window.location.href;
-
-        let shareLink = '';
+        const { name, emoji } = this.storyData.walletType;
+        const text = `내 지갑 흑역사 분석 결과: ${name} ${emoji}! 당신도 확인해보세요!`;
+        const url = window.location.href;
 
         switch (platform) {
-            case 'kakao':
-                // Kakao sharing requires SDK initialization
-                this.shareViaKakao(shareText, shareUrl);
-                break;
-                
             case 'twitter':
-                shareLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
-                window.open(shareLink, '_blank');
+                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
                 break;
-                
             case 'telegram':
-                shareLink = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
-                window.open(shareLink, '_blank');
+                window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`, '_blank');
+                break;
+            default:
+                this.copyShareLink(text, url);
                 break;
         }
 
         this.hideShareModal();
     }
 
-    // Kakao share implementation
-    shareViaKakao(text, url) {
-        // Note: Kakao SDK needs to be loaded in production
-        if (window.Kakao && window.Kakao.isInitialized()) {
-            window.Kakao.Share.sendDefault({
-                objectType: 'feed',
-                content: {
-                    title: '내지갑 흑역사ㅋㅋㅋ',
-                    description: text,
-                    imageUrl: window.location.origin + '/og-image.png',
-                    link: {
-                        mobileWebUrl: url,
-                        webUrl: url
-                    }
-                },
-                buttons: [{
-                    title: '내 흑역사 보러가기',
-                    link: {
-                        mobileWebUrl: url,
-                        webUrl: url
-                    }
-                }]
-            });
-        } else {
-            // Fallback to web share API or copy link
-            this.copyShareLink(text, url);
-        }
-    }
-
-    // Copy share link fallback
+    // Copy share link to clipboard
     copyShareLink(text, url) {
-        const shareData = `${text}\n${url}`;
-        
-        if (navigator.share) {
-            navigator.share({
-                title: '내지갑 흑역사ㅋㅋㅋ',
-                text: text,
-                url: url
-            }).catch(err => console.log('Share failed:', err));
-        } else if (navigator.clipboard) {
-            navigator.clipboard.writeText(shareData)
-                .then(() => {
-                    this.showToast('링크가 복사되었습니다!');
-                })
-                .catch(err => console.error('Copy failed:', err));
-        }
+        const fullText = `${text}\n${url}`;
+        navigator.clipboard.writeText(fullText).then(() => {
+            this.showToast('공유 링크가 복사되었어요!');
+        }, () => {
+            this.showToast('링크 복사에 실패했어요.', 'error');
+        });
     }
 
-    // Reset analysis
+    // Reset the analysis
     resetAnalysis() {
-        // Clear data
         this.walletData = null;
         this.storyData = null;
-        
-        // Clear input
-        const walletInput = document.getElementById('wallet-input');
-        if (walletInput) {
-            walletInput.value = '';
-        }
-        
-        // Reset progress
-        const progressFill = document.querySelector('.progress-fill');
-        if (progressFill) {
-            progressFill.style.width = '0%';
-        }
-        
-        // Go back to home
+        this.isAnalyzing = false;
+        document.getElementById('wallet-input').value = '';
         this.showBoard('board-home');
     }
 
-    // Show error message
+    // Show an error message (could be a toast or modal)
     showError(message) {
+        // Simple alert for now, can be replaced with a proper toast/modal
         this.showToast(message, 'error');
     }
 
-    // Show toast notification
     showToast(message, type = 'info') {
-        // Create toast element
+        // A simple toast implementation
         const toast = document.createElement('div');
-        toast.className = `toast toast-${type}`;
+        toast.className = `toast ${type}`;
         toast.textContent = message;
-        toast.style.cssText = `
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: ${type === 'error' ? 'var(--error)' : 'var(--neon-mint)'};
-            color: ${type === 'error' ? 'white' : 'var(--bg-primary)'};
-            padding: 16px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            z-index: 9999;
-            animation: slideUp 0.3s ease;
-        `;
-        
         document.body.appendChild(toast);
-        
-        // Remove after 3 seconds
+
         setTimeout(() => {
-            toast.style.animation = 'slideDown 0.3s ease';
+            toast.classList.add('show');
+        }, 100);
+
+        setTimeout(() => {
+            toast.classList.remove('show');
             setTimeout(() => {
                 document.body.removeChild(toast);
-            }, 300);
+            }, 500);
         }, 3000);
     }
 
-    // Initialize share functionality
+    // Load external scripts and initialize share functionality
     initializeShare() {
-        // Add CSS for toast animations
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideUp {
-                from {
-                    transform: translate(-50%, 100px);
-                    opacity: 0;
-                }
-                to {
-                    transform: translate(-50%, 0);
-                    opacity: 1;
-                }
-            }
-            @keyframes slideDown {
-                from {
-                    transform: translate(-50%, 0);
-                    opacity: 1;
-                }
-                to {
-                    transform: translate(-50%, 100px);
-                    opacity: 0;
-                }
-            }
-            .toast {
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            }
-        `;
-        document.head.appendChild(style);
-        
-        // Generate OG image URL based on results
-        this.updateOGTags();
+        // No external SDKs needed for Twitter and Telegram URL sharing
+        // If we add services like Kakao, we would load the SDK here.
     }
 
-    // Update OG tags for social sharing
+    // Update OG tags for sharing
     updateOGTags() {
         if (!this.storyData) return;
         
