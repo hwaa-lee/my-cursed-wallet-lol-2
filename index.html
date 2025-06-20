@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내지갑 흑역사ㅋㅋㅋ - My Cursed Wallet LOL</title>
+    
+    <!-- OG Meta Tags -->
+    <meta property="og:title" content="내지갑 흑역사ㅋㅋㅋ - My Cursed Wallet LOL">
+    <meta property="og:description" content="블록체인은 다 기억한다... 당신의 온체인 흑역사를 30초만에 분석해드립니다">
+    <meta property="og:image" content="https://your-domain.com/og-image.png">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="내지갑 흑역사ㅋㅋㅋ - My Cursed Wallet LOL">
+    <meta name="twitter:description" content="블록체인은 다 기억한다... 당신의 온체인 흑역사를 30초만에 분석해드립니다">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Ownglyph meetme';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/OwngglyphMeetme-BLaVy.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Board 1: Home -->
+    <div id="board-home" class="board active">
+        <div class="floating-emojis">
+            <span class="float-emoji" style="--delay: 0s; --top: 15%; --left: 10%; --x: 30px; --y: -50px; --r: 80deg;">💸</span>
+            <span class="float-emoji" style="--delay: 1s; --top: 30%; --left: 80%; --x: -40px; --y: 60px; --r: -70deg;">📉</span>
+            <span class="float-emoji" style="--delay: 2s; --top: 80%; --left: 50%; --x: 50px; --y: -30px; --r: 60deg;">🤡</span>
+            <span class="float-emoji" style="--delay: 3s; --top: 50%; --left: 20%; --x: -20px; --y: 50px; --r: -50deg;">💀</span>
+            <span class="float-emoji" style="--delay: 4s; --top: 90%; --left: 90%; --x: 60px; --y: -40px; --r: 120deg;">🔥</span>
+            <span class="float-emoji" style="--delay: 5s; --top: 5%; --left: 50%; --x: -30px; --y: 30px; --r: -40deg;">🚀</span>
+            <span class="float-emoji" style="--delay: 6s; --top: 70%; --left: 10%; --x: 20px; --y: -60px; --r: 150deg;">🌕</span>
+            <span class="float-emoji" style="--delay: 7s; --top: 40%; --left: 95%; --x: -50px; --y: 20px; --r: -100deg;">💎</span>
+            <span class="float-emoji" style="--delay: 8s; --top: 20%; --left: 70%; --x: 40px; --y: -70px; --r: 110deg;">🙏</span>
+            <span class="float-emoji" style="--delay: 9s; --top: 85%; --left: 25%; --x: -60px; --y: 40px; --r: -90deg;">😭</span>
+        </div>
+        <div class="container">
+            <header class="main-header">
+                <h1 class="kr-title">내지갑 흑역사ㅋㅋㅋ</h1>
+                <p class="en-subtitle">My Cursed Wallet LOL</p>
+                <p class="tagline">블록체인은 다 기억한다…</p>
+            </header>
+            
+            <div class="illustration">
+                <div class="retro-comic-art">
+                    <div class="wallet-character">
+                        <img src="home-image.png" alt="Cursed Wallet Character">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="input-section">
+                <input 
+                    type="text" 
+                    id="wallet-input" 
+                    class="wallet-input" 
+                    placeholder="0xd8dA… / vitalik.eth"
+                    autocomplete="off"
+                    spellcheck="false"
+                >
+                <div class="supported-chains">
+                    <div class="chain-marquee">
+                        <span>Ethereum</span>
+                        <span>Polygon</span>
+                        <span>Arbitrum</span>
+                        <span>Base</span>
+                        <span>Kaia</span>
+                        <!-- Duplicate for seamless loop -->
+                        <span>Ethereum</span>
+                        <span>Polygon</span>
+                        <span>Arbitrum</span>
+                        <span>Base</span>
+                        <span>Kaia</span>
+                    </div>
+                </div>
+                <button id="analyze-btn" class="cta-btn">
+                    흑역사 분석 GO
+                </button>
+            </div>
+            
+            <footer class="main-footer">
+                <p>Powered by <span class="nodit-logo">Nodit</span></p>
+            </footer>
+        </div>
+    </div>
+    
+    <!-- Board 2: Loader -->
+    <div id="board-loader" class="board">
+        <div class="loader-container">
+            <div class="floating-doodles">
+                <span class="doodle" style="--x: 10%; --y: 20%">🙈</span>
+                <span class="doodle" style="--x: 80%; --y: 30%">📊</span>
+                <span class="doodle" style="--x: 20%; --y: 70%">⛓️</span>
+                <span class="doodle" style="--x: 70%; --y: 80%">🔍</span>
+                <span class="doodle" style="--x: 50%; --y: 10%">💭</span>
+            </div>
+            
+            <h2 class="loader-headline">
+                <span class="kr">분석 중...</span>
+                <span class="en">Crunching...</span>
+            </h2>
+            
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            
+            <p class="stage-text">온체인 데이터 탐색 중...</p>
+            <p class="micro-copy">준비해... 충격적일 수도 있어...</p>
+        </div>
+    </div>
+    
+    <!-- Board 3: Result Locked -->
+    <div id="board-result-locked" class="board">
+        <div class="result-container">
+            <div class="wallet-type-section">
+                <h2 class="wallet-type">
+                    <span class="type-name"></span>
+                    <span class="type-emoji"></span>
+                </h2>
+                <div class="type-desc">
+                    <p class="desc-main"></p>
+                    <p class="desc-sub"></p>
+                </div>
+            </div>
+            
+            <div class="cringe-history">
+                <h3>당신의 흑역사 TOP 3</h3>
+                <div class="history-list"></div>
+            </div>
+            
+            <div class="stats-section">
+                <h3>온체인 스탯</h3>
+                <div class="stats-grid"></div>
+            </div>
+            
+            <div class="locked-section blur">
+                <div class="persona-section">
+                    <h3>당신의 성향 분석</h3>
+                    <div class="persona-points"></div>
+                </div>
+                <div class="final-diagnosis">
+                    <p class="diagnosis-text"></p>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="unlock-btn primary-btn">
+                    Nodit 회원가입하고 더 자세히 보기!
+                </button>
+                <div class="secondary-actions">
+                    <button class="share-btn">친구들한테 공유하기!</button>
+                    <button class="reset-btn">다시 테스트하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Board 4: Result Unlocked -->
+    <div id="board-result-unlocked" class="board">
+        <!-- Content will be copied from board 3 -->
+    </div>
+    
+    <!-- Share Modal -->
+    <div id="share-modal" class="modal">
+        <div class="modal-content">
+            <h3>친구들한테 공유하기!</h3>
+            <div class="share-buttons">
+                <button class="share-option" data-platform="kakao">
+                    <span class="icon">💬</span> 카카오톡
+                </button>
+                <button class="share-option" data-platform="twitter">
+                    <span class="icon">🐦</span> X (Twitter)
+                </button>
+                <button class="share-option" data-platform="telegram">
+                    <span class="icon">✈️</span> 텔레그램
+                </button>
+            </div>
+            <button class="modal-close">닫기</button>
+        </div>
+    </div>
+    
+    <script src="api.js"></script>
+    <script src="stories.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

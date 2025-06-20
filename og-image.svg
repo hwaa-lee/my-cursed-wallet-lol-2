@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  
+  <!-- Gradient overlay -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00EFA6;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#00EFA6;stop-opacity:0.05" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#gradient)"/>
+  
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  
+  <!-- Center ghost emoji -->
+  <text x="600" y="250" font-family="Apple Color Emoji, Segoe UI Emoji" font-size="120" text-anchor="middle">👻</text>
+  
+  <!-- Korean title -->
+  <text x="600" y="350" font-family="'Noto Sans KR', sans-serif" font-size="60" font-weight="bold" fill="#00EFA6" text-anchor="middle">내지갑 흑역사ㅋㅋㅋ</text>
+  
+  <!-- English subtitle -->
+  <text x="600" y="400" font-family="system-ui, -apple-system, sans-serif" font-size="30" fill="#b0b0b0" text-anchor="middle">My Cursed Wallet LOL</text>
+  
+  <!-- Tagline -->
+  <text x="600" y="480" font-family="'Noto Sans KR', sans-serif" font-size="24" fill="#808080" text-anchor="middle" font-style="italic">블록체인은 다 기억한다...</text>
+  
+  <!-- Powered by -->
+  <text x="600" y="570" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#606060" text-anchor="middle">Powered by Nodit</text>
+  
+  <!-- Decorative elements -->
+  <circle cx="100" cy="100" r="3" fill="#00EFA6" opacity="0.5"/>
+  <circle cx="1100" cy="100" r="3" fill="#00EFA6" opacity="0.5"/>
+  <circle cx="100" cy="530" r="3" fill="#00EFA6" opacity="0.5"/>
+  <circle cx="1100" cy="530" r="3" fill="#00EFA6" opacity="0.5"/>
+</svg>
